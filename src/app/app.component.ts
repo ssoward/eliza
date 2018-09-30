@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { switchMap, map } from 'rxjs/operators';
+
 import {Word} from "./word";
+import {interval} from "rxjs";
+
+//output: 0,1,2,3,4,5....
+// const subscribe = source.subscribe(val => console.log(val));
 
 @Component({
   selector: 'app-root',
@@ -9,9 +15,11 @@ import {Word} from "./word";
 })
 export class AppComponent implements OnInit{
   title = 'My Princess Eliza';
-  word : Word = {grade: 'grade001',  name : 'test'}
+  word : Word = {grade: 'Grade',  name : 'Select a'}
   grade: string = "grade001";
   count: number =  0;
+  source = interval(1000);
+  interval = null;
   data = {
     grade001:["a", "about", "all", "an", "and", "are", "as", "at", "be", "been", "but", "by", "called", "can", "come", "could", "day", "did", "do", "down", "each", "find", "first", "for", "from", "get", "go", "had", "has", "have", "he", "her", "him", "his", "how", "I", "if", "in", "into", "is", "it", "like", "long", "look", "made", "make", "many", "may", "more", "my", "no", "not", "now", "number", "of", "oil", "on", "one", "or", "other", "out", "part", "people", "said", "see", "she", "sit", "so", "some", "than", "that", "the", "their", "them", "then", "there", "these", "they", "this", "time", "to", "two", "up", "use", "was", "water", "way", "we", "were", "what", "when", "which", "who", "will", "with", "words", "would", "write", "you", "your"],
     grade002:["after", "again", "air", "also", "America", "animal", "another", "answer", "any", "around", "ask", "away", "back", "because", "before", "big", "boy", "came", "change", "different", "does", "end", "even", "follow", "form", "found", "give", "good", "great", "hand", "help", "here", "home", "house", "just", "kind", "know", "land", "large", "learn", "letter", "line", "little", "live", "man", "me", "means", "men", "most", "mother", "move", "much", "must", "name", "need", "new", "off", "old", "only", "our", "over", "page", "picture", "place", "play", "point", "put", "read", "right", "same", "say", "sentence", "set", "should", "show", "small", "sound", "spell", "still", "study", "such", "take", "tell", "things", "think", "three", "through", "too", "try", "turn", "us", "very", "want", "well", "went", "where", "why", "work", "world", "years"],
@@ -26,16 +34,28 @@ export class AppComponent implements OnInit{
   };
   index = 0;
 
-  toggleWord(){
-    this.count = (this.count+1);
-    this.word.name = this.data[this.grade][this.count];
-
+  random(funct: number){
+    if(funct){
+      this.interval = this.source.subscribe(val =>
+        this.toggleWord(1)
+      );
+    }else{
+      this.interval.unsubscribe()
+    }
   }
-  myClickFunction(data: string, event) {
+
+  toggleWord(direction: number){
+    this.count = (this.count+direction);
+    this.word.name = this.data[this.grade][this.count];
+  }
+
+  toggleGrade(data: string, event, grade: string) {
     //just added console.log which will display the event details in browser on click of the button.
     this.grade = data;
     this.count = 0;
-    this.word.name = this.data[this.grade][0];
+    this.word = new Word();
+    this.word.name = this.data[data][0];
+    this.word.grade = grade;
     // console.log(data);
     // console.log(event);
   }

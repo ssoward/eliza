@@ -7,20 +7,37 @@
   <!--<input [(ngModel)]="word.name" placeholder="name">-->
   <img width="300" alt="Angular Logo" src="/assets/Eliza.png">
   <br/>
-  <div>
-    <a (click)="toggleWord()"> <div class="large">{{word.name | uppercase}}</div> </a>
+  <div style="text-align: center">
+    <table width="100%">
+      <tr>
+        <td> <a (click)="toggleWord(-1)"> <span class="toggle"><<<</span> </a> </td>
+        <td width="80%">
+          <span class="large">{{word.name | uppercase}}</span>
+        </td>
+
+        <td>
+          <a (click)="toggleWord(1)"> <span class="toggle">>>></span> </a>
+        </td>
+      </tr>
+    </table>
   </div>
   <div>
-    <div><a (click)="myClickFunction('grade001', $event)"> 1st Grade </a></div>
-    <div><a (click)="myClickFunction('grade002', $event)"> 2nd Grade </a></div>
-    <div><a (click)="myClickFunction('grade003', $event)"> 3rd Grade </a></div>
-    <div><a (click)="myClickFunction('grade004', $event)"> 4th Grade </a></div>
-    <div><a (click)="myClickFunction('grade005', $event)"> 5th Grade </a></div>
-    <div><a (click)="myClickFunction('grade006', $event)"> 6th Grade </a></div>
-    <div><a (click)="myClickFunction('grade007', $event)"> 7th Grade </a></div>
-    <div><a (click)="myClickFunction('grade008', $event)"> 8th Grade </a></div>
-    <div><a (click)="myClickFunction('grade009', $event)"> 9th Grade </a></div>
-    <div><a (click)="myClickFunction('grade0010', $event)">10th Grade </a></div>
+    <span class="toggle">{{word.grade}}</span>
+
+    <div><a (click)="toggleGrade('grade001', $event, '1st Grade' )"> 1st Grade </a></div>
+    <div><a (click)="toggleGrade('grade002', $event, '2nd Grade' )"> 2nd Grade </a></div>
+    <div><a (click)="toggleGrade('grade003', $event, '3rd Grade' )"> 3rd Grade </a></div>
+    <div><a (click)="toggleGrade('grade004', $event, '4th Grade' )"> 4th Grade </a></div>
+    <div><a (click)="toggleGrade('grade005', $event, '5th Grade' )"> 5th Grade </a></div>
+    <div><a (click)="toggleGrade('grade006', $event, '6th Grade' )"> 6th Grade </a></div>
+    <div><a (click)="toggleGrade('grade007', $event, '7th Grade' )"> 7th Grade </a></div>
+    <div><a (click)="toggleGrade('grade008', $event, '8th Grade' )"> 8th Grade </a></div>
+    <div><a (click)="toggleGrade('grade009', $event, '9th Grade' )"> 9th Grade </a></div>
+    <div><a (click)="toggleGrade('grade0010', $event, '10th Grade')">10th Grade </a></div>
+    <div>
+      <a (click)="random(1)"> <span class="toggle">Start</span> </a>
+      <a (click)="random(0)"> <span class="toggle">Stop</span> </a>
+    </div>
   </div>
 </div>
 

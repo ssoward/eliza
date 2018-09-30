@@ -1,0 +1,26 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <div class="header">
+    Welcome to {{ title }}!
+  </div>
+  <br/>
+  <!--<input [(ngModel)]="word.name" placeholder="name">-->
+  <img width="300" alt="Angular Logo" src="/assets/Eliza.png">
+  <br/>
+  <div>
+    <a (click)="toggleWord()"> <div class="large">{{word.name | uppercase}}</div> </a>
+  </div>
+  <div>
+    <div><a (click)="myClickFunction('grade001', $event)"> 1st Grade </a></div>
+    <div><a (click)="myClickFunction('grade002', $event)"> 2nd Grade </a></div>
+    <div><a (click)="myClickFunction('grade003', $event)"> 3rd Grade </a></div>
+    <div><a (click)="myClickFunction('grade004', $event)"> 4th Grade </a></div>
+    <div><a (click)="myClickFunction('grade005', $event)"> 5th Grade </a></div>
+    <div><a (click)="myClickFunction('grade006', $event)"> 6th Grade </a></div>
+    <div><a (click)="myClickFunction('grade007', $event)"> 7th Grade </a></div>
+    <div><a (click)="myClickFunction('grade008', $event)"> 8th Grade </a></div>
+    <div><a (click)="myClickFunction('grade009', $event)"> 9th Grade </a></div>
+    <div><a (click)="myClickFunction('grade0010', $event)">10th Grade </a></div>
+  </div>
+</div>
+
